@@ -11,11 +11,12 @@ const Recipe = ({ recipe }) => {
     const { recipe_name, recipe_img, ingredients, cooking_method, rating } = recipe;
 
     const handleFav = () => {
-        if(favourites){
-            const notify = () => toast("Wow so easy!");
-        }
-        else{
-            setFavourites(true)
+        if (favourites) {
+            setFavourites(false);
+            toast.error("Removed from favourites");
+        } else {
+            setFavourites(true);
+            toast.success("Added to favourites");
         }
     };
 
@@ -42,8 +43,14 @@ const Recipe = ({ recipe }) => {
                         />
                         <span>{rating}</span>
                     </div>
-                    <button onClick={handleFav}>{favourites ? <MdFavorite className='text-3xl text-pink-600'></MdFavorite> : <MdFavoriteBorder className='text-3xl text-pink-600'></MdFavoriteBorder>}</button>
-                    {/* <ToastContainer /> */}
+                    <button onClick={handleFav}>
+                        {favourites ? (
+                            <MdFavorite className='text-3xl text-pink-600' />
+                        ) : (
+                            <MdFavoriteBorder className='text-3xl text-pink-600' />
+                        )}
+                    </button>
+
                 </div>
             </div>
         </div>
