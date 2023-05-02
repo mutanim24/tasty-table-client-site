@@ -5,6 +5,7 @@ import {
 import Main from "../Layout/Main";
 import Home from "../component/Home/Home";
 import Blog from "../component/Blog/Blog";
+import ChefDetails from "../component/ChefDetails/ChefDetails";
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +20,11 @@ export const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/chef-details/:id',
+                element: <ChefDetails></ChefDetails>,
+                loader: ({params}) => fetch(``)
             }
         ]
     },
