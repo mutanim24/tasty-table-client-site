@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import banner_bg from '../../assets/banner-bg.jpg';
 import chef from '../../assets/chef.png'
+import Chef from '../Chef/Chef';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+    const chefs = useLoaderData();
+    
     return (
         <div>
             <div className="banner relative">
@@ -25,11 +29,18 @@ const Home = () => {
                 </div>
             </div>
             <div className="chef-section p-14">
-                <div className='text-center'>
+                <div className='text-center mb-4'>
                     <h1 className='text-5xl font-bold mb-4'>Meet Our Culinary Masters</h1>
                     <p>Get to Know the Talented Chefs Behind Your Favorite TastyTable Recipes</p>
                 </div>
-                
+                <div className='grid grid-cols-2 gap-4'>
+                    {
+                        chefs.map(chef => <Chef
+                            key={chef.id}
+                            chef={chef}
+                        ></Chef>)
+                    }
+                </div>
             </div>
         </div>
     );
