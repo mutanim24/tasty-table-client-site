@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import banner_bg from '../../assets/banner-bg.jpg';
+import bottom_banner from '../../assets/bottom banner.jpg';
 import chef from '../../assets/chef.png'
 import Chef from '../Chef/Chef';
 import { useLoaderData } from 'react-router-dom';
+import RecipeCard from '../RecipeCard/RecipeCard';
 
 const Home = () => {
     const chefs = useLoaderData();
-    
+    const [recipes, setRecipes] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:4000/recipes")
+            .then(res => res.json())
+            .then(data => setRecipes(data))
+    }, [])
     return (
         <div>
             <div className="banner relative">
@@ -40,6 +47,38 @@ const Home = () => {
                             chef={chef}
                         ></Chef>)
                     }
+                </div>
+            </div>
+            <div className='my-5'>
+                <div className='text-center mb-4'>
+                    <h1 className='text-5xl font-bold mb-4'>Trending Tastes</h1>
+                    <p>Explore the Flavors Everyone is Talking About</p>
+                </div>
+                <div className='grid grid-cols-3 gap-4 px-14'>
+                    {
+                        recipes.map(recipe => <RecipeCard
+                            key={recipe.id}
+                            recipe={recipe}
+                        ></RecipeCard>)
+                    }
+                </div>
+            </div>
+            <div>
+                <div className="banner relative">
+                    <div className='bg-fixed' style={{
+                        backgroundImage: `url(${bottom_banner})`,
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        height: '400px'
+                    }}>
+
+                    </div>
+                    <div className="banner-content absolute top-0 bg-black h-[400px] w-full bg-opacity-40 p-14">
+                        <div className='text-white my-auto'>
+                            <h1 className='text-6xl font-bold mb-4'>Indulge in Deliciousness with TastyTable</h1>
+                            <p>Your Ultimate Destination for Mouthwatering Recipes and Food Inspiration</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
