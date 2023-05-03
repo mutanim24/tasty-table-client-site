@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md'
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,13 +12,19 @@ const Recipe = ({ recipe }) => {
     const { recipe_name, recipe_img, ingredients, cooking_method, rating } = recipe;
 
     const handleFav = () => {
-        if (favourites) {
-            setFavourites(false);
-            toast.error("Removed from favourites");
-        } else {
-            setFavourites(true);
-            toast.success("Added to favourites");
+        if(favourites){
+            toast.success('Added to favorite');
         }
+        else{
+            setFavourites(true)
+        }
+        // if (favourites) {
+        //     setFavourites(false);
+        //     toast.error("Removed from favourites");
+        // } else {
+        //     setFavourites(true);
+        //     toast.success("Added to favourites");
+        // }
     };
 
     return (
@@ -43,14 +50,16 @@ const Recipe = ({ recipe }) => {
                         />
                         <span>{rating}</span>
                     </div>
-                    <button onClick={handleFav}>
-                        {favourites ? (
-                            <MdFavorite className='text-3xl text-pink-600' />
-                        ) : (
-                            <MdFavoriteBorder className='text-3xl text-pink-600' />
-                        )}
-                    </button>
-
+                    <div>
+                        <button onClick={handleFav}>
+                            {favourites ? (
+                                <MdFavorite className='text-3xl text-pink-600' />
+                            ) : (
+                                <MdFavoriteBorder className='text-3xl text-pink-600' />
+                            )}
+                        </button>
+                        <ToastContainer />
+                    </div>
                 </div>
             </div>
         </div>
