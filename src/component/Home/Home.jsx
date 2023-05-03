@@ -66,17 +66,31 @@ const Home = () => {
             <div>
                 <div className="banner relative">
                     <div className='bg-fixed' style={{
-                        backgroundImage: `url(${bottom_banner})`,
+                        backgroundImage: `url(${banner_bg})`,
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         height: '400px'
                     }}>
 
                     </div>
-                    <div className="banner-content absolute top-0 bg-black h-[400px] w-full bg-opacity-40 p-14">
-                        <div className='text-white my-auto'>
-                            <h1 className='text-6xl font-bold mb-4'>Indulge in Deliciousness with TastyTable</h1>
-                            <p>Your Ultimate Destination for Mouthwatering Recipes and Food Inspiration</p>
+                    <div className="banner-content absolute top-0 bg-black h-[400px] w-full bg-opacity-70 py-8 px-14">
+                        <div className='text-white text-center mb-5'>
+                            <h1 className='text-6xl font-bold mb-5'>Eating for Health</h1>
+                            <p>Tips for Making the Most of Your Meals</p>
+                        </div>
+                        <div className='grid grid-cols-3 gap-8 text-white mt-8'>
+                            <div className='border-r-2'>
+                                <h2 className='text-2xl font-semibold mb-3'>Focus unprocessed foods</h2>
+                                <p>One of the simplest ways to eat healthier is to focus on whole, unprocessed foods.</p>
+                            </div>
+                            <div className='border-r-2'>
+                                <h2 className='text-2xl font-semibold mb-3'>Eat oiless food</h2>
+                                <p>One of the simplest ways to eat healthier is to focus on whole, unprocessed foods.</p>
+                            </div>
+                            <div>
+                                <h2 className='text-2xl font-semibold mb-3'>Eat vegetable</h2>
+                                <p>One of the simplest ways to eat healthier is to focus on whole, unprocessed foods.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
