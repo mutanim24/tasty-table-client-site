@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
+    const { loginWithGoogle, loginWithGit, setUser } = useContext(AuthContext)
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -11,6 +13,29 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, photo, email, password)
+    }
+
+    const loginGoogleHandle = () => {
+        loginWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                setUser(user)
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    }
+    const loginGitHandle = () => {
+        loginWithGit()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                setUser(user)
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -50,13 +75,13 @@ const Register = () => {
                         <label className="label">
                             <Link to='/login' className="label-text-alt link link-hover">Already have an account</Link>
                         </label>
-                        <button className='flex items-center justify-center gap-2 btn bg-sky-600'>
+                        <button onClick={loginGoogleHandle} className='flex items-center justify-center gap-2 btn bg-sky-600'>
                             <FaGoogle size={20} />
                             <span>Login with Google</span>
                         </button>
-                        <button className='flex items-center justify-center gap-2 btn bg-sky-600'>
+                        <button onClick={loginGitHandle} className='flex items-center justify-center gap-2 btn bg-sky-600'>
                             <FaGithub size={20} />
-                            <span>Login with Google</span>
+                            <span>Login with GitHub</span>
                         </button>
                     </form>
                 </div>

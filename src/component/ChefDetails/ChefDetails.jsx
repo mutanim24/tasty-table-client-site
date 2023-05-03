@@ -1,6 +1,6 @@
 import React from 'react';
 import chef_bg from '../../assets/chef-bg-banner.jpg'
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 import { AiFillLike, AiOutlineCalendar } from 'react-icons/ai';
 import { FaHamburger } from 'react-icons/fa';
 import Recipe from '../Recipe/Recipe';
@@ -8,10 +8,11 @@ import Recipe from '../Recipe/Recipe';
 
 const ChefDetails = () => {
     const chefDetails = useLoaderData();
-    console.log(chefDetails.recipes);
+    // console.log(chefDetails.recipes);
     const { id, chef_name, chef_description, years_of_experience, num_recipes, likes, chef_picture } = chefDetails;
     const recipes = chefDetails.recipes;
     const { recipe_name, recipe_img, ingredients, cooking_method, rating, favorite } = chefDetails.recipes;
+
 
     return (
         <>

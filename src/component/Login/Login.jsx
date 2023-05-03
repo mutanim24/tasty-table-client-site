@@ -1,12 +1,18 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import AuthProvider, { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
+    const {loginWithGoogle, loginWithGit} = useContext(AuthContext)
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const { signIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
+    const from = location.state?.from?.pathname;
 
     const handleLogin = event => {
         event.preventDefault();
@@ -20,7 +26,6 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 setSuccess("Successfully login")
             })
             .catch(err => {
@@ -28,6 +33,30 @@ const Login = () => {
                 setError(err.message)
             })
 
+    }
+
+    const loginGoogleHandle = () => {
+        loginWithGoogle()
+            .then(result => {
+                const user = result.user;
+                navigate(from)
+                console.log(user)
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    }
+
+    const loginGitHandle = () => {
+        loginWithGit()
+            .then(result => {
+                const user = result.user;
+                navigate(from)
+                console.log(user)
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -62,13 +91,13 @@ const Login = () => {
                         <label className="label">
                             <Link to='/register' className="label-text-alt link link-hover">Don't have an account</Link>
                         </label>
-                        <button className='flex items-center justify-center gap-2 btn bg-sky-600'>
+                        <button onClick={loginGoogleHandle} className='flex items-center justify-center gap-2 btn bg-sky-600'>
                             <FaGoogle size={20} />
                             <span>Login with Google</span>
                         </button>
-                        <button className='flex items-center justify-center gap-2 btn bg-sky-600'>
+                        <button onClick={loginGitHandle} className='flex items-center justify-center gap-2 btn bg-sky-600'>
                             <FaGithub size={20} />
-                            <span>Login with Google</span>
+                            <span>Login with GitHub</span>
                         </button>
                     </form>
                 </div>

@@ -8,6 +8,8 @@ import Blog from "../component/Blog/Blog";
 import ChefDetails from "../component/ChefDetails/ChefDetails";
 import Login from "../component/Login/Login";
 import Register from "../component/Login/Register";
+import FourZero from "../component/FourZero/FourZero";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -25,7 +27,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/chef-details/:id',
-                element: <ChefDetails></ChefDetails>,
+                element: <PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:4000/chefs/${params.id}`)
             },
             {
@@ -35,6 +37,10 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '*',
+                element: <FourZero></FourZero>
             }
         ]
     },
