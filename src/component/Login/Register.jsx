@@ -1,21 +1,49 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../provider/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-    const { loginWithGoogle, loginWithGit, setUser } = useContext(AuthContext)
+    const { loginWithGoogle, loginWithGit, setUser, createUser } = useContext(AuthContext);
+
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value;
-        const photo = form.photo.value;
+        const displayName = form.name.value;
+        const photoUrl = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photo, email, password)
+        // console.log(name, photo, email, password)
+
+        // password validation
+        // if (!displayName || !email || !password || !photoUrl) {
+        //     toast.error("A user cannot submit empty email and password fields");
+        //     return;
+        // }
+
+        // if (!passwordRegex.test(password)) {
+        //     toast.error("The password is less than 6 characters");
+        //     return;
+        // }
+
+        createUser(email, password, displayName, photoUrl)
+            .then((result) => {
+                // User created successfully, update profile
+                const loggedUser = result.user;
+                return updateProfile(loggedUser, {
+                    displayName: displayName,
+                    photoURL: photoUrl,
+                }).then(() => {
+                    console.log("Profile updated successfully");
+                    console.log(loggedUser);
+                    // toast.success("User created successfully");
+                    form.reset();
+                });
+            })
     }
 
     const loginGoogleHandle = () => {
