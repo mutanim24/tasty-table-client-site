@@ -20,15 +20,12 @@ const Register = () => {
         // console.log(name, photo, email, password)
 
         // password validation
-        // if (!displayName || !email || !password || !photoUrl) {
-        //     toast.error("A user cannot submit empty email and password fields");
-        //     return;
-        // }
-
-        // if (!passwordRegex.test(password)) {
-        //     toast.error("The password is less than 6 characters");
-        //     return;
-        // }
+        setError("");
+        setSuccess("");
+        if (password.length < 6) {
+            setError("The password is less than 6 characters");
+            return;
+        }
 
         createUser(email, password, displayName, photoUrl)
             .then((result) => {
@@ -38,9 +35,6 @@ const Register = () => {
                     displayName: displayName,
                     photoURL: photoUrl,
                 }).then(() => {
-                    console.log("Profile updated successfully");
-                    console.log(loggedUser);
-                    // toast.success("User created successfully");
                     form.reset();
                 });
             })
@@ -103,6 +97,10 @@ const Register = () => {
                         <div className="form-control mt-6">
                             <input className='btn bg-sky-600' type="submit" value="Register" />
                         </div>
+                        <label className="label">
+                            <p className='text-red-600'><small>{error}</small></p>
+                            <p className='text-green-600'><small>{success}</small></p>
+                        </label>
                         <label className="label">
                             <Link to='/login' className="label-text-alt link link-hover">Already have an account</Link>
                         </label>
