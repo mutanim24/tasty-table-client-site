@@ -25,13 +25,13 @@ const Home = () => {
                 }}>
 
                 </div>
-                <div className="banner-content absolute top-0 bg-black h-[550px] bg-opacity-40 md:flex w-full md:px-14">
+                <div className="banner-content py-16 md:py-0 absolute top-0 bg-black h-[550px] bg-opacity-40 md:flex w-full md:px-14">
                     <div className='md:w-1/2 text-white my-auto text-center md:text-left'>
                         <h1 className='text-4xl md:text-6xl font-bold mb-4'>Indulge in Deliciousness with TastyTable</h1>
                         <p>Your Ultimate Destination for Mouthwatering Recipes and Food Inspiration</p>
                     </div>
-                    <div className='md:w-1/2'>
-                        <img className='md:w-96 md:max-w-full mx-auto	md:max-h-full' src={chef} alt="" />
+                    <div className='mx-auto w-8/12 md:w-1/2'>
+                        <img className='md:max-w-full mx-auto	md:max-h-full' src={chef} alt="" />
                     </div>
                 </div>
             </div>

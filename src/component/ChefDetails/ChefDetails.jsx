@@ -26,10 +26,10 @@ const ChefDetails = () => {
 
                 </div>
                 <div className="banner-content absolute top-0 bg-black h-[350px] bg-opacity-40 flex w-full p-14">
-                    <div className='w-4/12'>
+                    <div className='md:w-4/12'>
                         <img className='max-w-full mx-auto	max-h-full rounded-full' src={chef_picture} alt="" />
                     </div>
-                    <div className='w-8/12 text-white my-auto'>
+                    <div className='md:w-8/12 text-white my-auto'>
                         <h1 className='text-4xl font-bold mb-3'>{chef_name}</h1>
                         <p>{chef_description}</p>
                         <div className='flex gap-12 font-semibold mt-4'>
