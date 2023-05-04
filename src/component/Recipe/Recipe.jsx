@@ -18,13 +18,6 @@ const Recipe = ({ recipe }) => {
         else{
             setFavourites(true)
         }
-        // if (favourites) {
-        //     setFavourites(false);
-        //     toast.error("Removed from favourites");
-        // } else {
-        //     setFavourites(true);
-        //     toast.success("Added to favourites");
-        // }
     };
 
     return (
@@ -32,9 +25,9 @@ const Recipe = ({ recipe }) => {
             <div className='w-4/12'>
                 <img className='rounded' src={recipe_img} alt="" />
             </div>
-            <div className='w-8/12'>
+            <div className='w-8/12 p-4'>
                 <h1 className='text-3xl font-semibold'>{recipe_name}</h1>
-                <p className='my-2'>{cooking_method}</p>
+                <p className='my-3'>{cooking_method}</p>
                 {
                     ingredients.map((ingredient, index) => {
                         return <ol>

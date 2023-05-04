@@ -4,6 +4,9 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+
     const { loginWithGoogle, loginWithGit, setUser } = useContext(AuthContext)
     const handleRegister = (event) => {
         event.preventDefault();

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
             .catch(err => console.log(err.message))
     }
     return (
-        <div className="navbar bg-sky-200">
+        <div className="navbar  mx-auto bg-sky-200">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -25,9 +25,9 @@ const Header = () => {
                 <Link to='/' className="btn btn-ghost normal-case text-3xl">TastyTable</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 font-semibold">
-                    <li><Link to='/'>Home</Link></li>
-                    <li><Link to='/blog'>Blog</Link></li>
+                <ul className="menu menu-horizontal px-1 font-semibold space-x-6">
+                    <NavLink className={({isActive}) => isActive ? 'font-bold border-b border-black' : ''} to='/'>Home</NavLink>
+                    <NavLink className={({isActive}) => isActive ? 'font-bold border-b border-black' : ''} to='/blog'>Blog</NavLink>
                 </ul>
             </div>
             <div className="navbar-end flex items-center gap-5">
