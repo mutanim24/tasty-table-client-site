@@ -4,14 +4,15 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import AuthProvider, { AuthContext } from '../../provider/AuthProvider';
 
 const Login = () => {
-    const {loginWithGoogle, loginWithGit} = useContext(AuthContext)
+    const {loginWithGoogle, loginWithGit} = useContext(AuthContext);
+
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const { signIn } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
     const from = location.state?.from?.pathname;
 
     const handleLogin = event => {
@@ -26,7 +27,7 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const user = result.user;
-                setSuccess("Successfully login")
+                setSuccess("Login Successfully")
             })
             .catch(err => {
                 console.log(err.message);

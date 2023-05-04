@@ -9,9 +9,9 @@ const RecipeCard = ({ recipe }) => {
         <div className='rounded shadow-lg'>
             <img className='rounded' src={image} alt="" />
             <div className='p-6'>
-                <h2 className='text-3xl font-bold'>{name}</h2>
-                <p className='font-semibold my-3'>-By {chef_name}</p>
-                <p>{description}</p>
+                <h2 className='text-2xl md:text-3xl font-bold'>{name}</h2>
+                <p className='font-semibold my-3 text-sm md:text-base'>-By {chef_name}</p>
+                <p className='text-sm md:text-base'>{description}</p>
                 <div className='flex justify-between gap-4 mt-3'>
                     <p className='flex items-center gap-1'>
                         <AiFillLike></AiFillLike>

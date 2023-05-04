@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:4000/chefs")
+                loader: () => fetch("https://tasty-table-server-side-mutanim24.vercel.app/chefs")
             }, 
             {
                 path: '/blog',
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
             {
                 path: '/chef-details/:id',
                 element: <PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:4000/chefs/${params.id}`)
+                loader: ({params}) => fetch(`https://tasty-table-server-side-mutanim24.vercel.app/chefs/${params.id}`)
             },
             {
                 path: '/login',

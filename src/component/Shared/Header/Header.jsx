@@ -22,7 +22,7 @@ const Header = () => {
                         <li><Link to='/blog'>Blog</Link></li>
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-3xl">TastyTable</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-2xl md:text-3xl">TastyTable</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 font-semibold space-x-6">
@@ -32,7 +32,7 @@ const Header = () => {
             </div>
             <div className="navbar-end flex items-center gap-5">
                 <div>{user ?
-                    <div className='flex gap-5'>
+                    <div className='flex gap-3 md:gap-5'>
                         <img title={user.displayName} className='rounded-full w-11 h-11' src={user.photoURL} alt="User" />
                         <button onClick={logoutHandle} className='btn'>Logout</button>
                     </div> :

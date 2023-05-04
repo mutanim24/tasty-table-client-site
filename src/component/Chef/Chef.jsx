@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 const Chef = ({ chef }) => {
     const { id, chef_name, chef_picture, num_recipes, likes, years_of_experience } = chef;
     return (
-        <div className='flex items-center gap-5 p-5 rounded shadow-xl'>
-            <div className='w-1/2'>
+        <div className='md:flex items-center gap-5 p-5 rounded shadow-xl'>
+            <div className='md:w-1/2'>
                 <img src={chef_picture} alt="" />
             </div>
-            <div className='w-1/2 space-y-4 font-semibold'>
+            <div className='md:w-1/2 space-y-4 font-semibold mt-4 md:mt-0'>
                 <h1 className='text-3xl font-bold'>{chef_name}</h1>
                 <p className='flex items-center gap-1'>
                     <AiOutlineCalendar></AiOutlineCalendar>
